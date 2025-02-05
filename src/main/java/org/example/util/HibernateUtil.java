@@ -35,6 +35,7 @@ public class HibernateUtil {
                     }
                 }
 
+
                 // Configurar propiedades de Hibernate
                 properties.put("hibernate.connection.url", dbUrl);
                 properties.put("hibernate.connection.username", dbUser);
