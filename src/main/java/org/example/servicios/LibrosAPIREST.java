@@ -14,10 +14,8 @@ public class LibrosAPIREST {
     public LibrosAPIREST(LibroDAOInterface implementacion) {
         String puerto = System.getenv("PORT");
 
-        int port = puerto != null ?
-                Integer.parseInt(puerto) :
-                Integer.parseInt(puerto);
-        Spark.port(port);
+        //int port = Integer.parseInt(puerto);
+        Spark.port(8080);
 
         dao = implementacion;
 
@@ -31,7 +29,7 @@ public class LibrosAPIREST {
 
         // Endpoint para obtener un libro por su ID
         Spark.get("/libros/id/:id", (request, response) -> {
-            Long id = Long.parseLong(request.params(":id"));
+            long id = Long.parseLong(request.params(":id"));
             Libro libro = dao.buscarPorId(id);
             response.type("application/json");
             if (libro != null) {
@@ -70,7 +68,7 @@ public class LibrosAPIREST {
 
         // Endpoint para eliminar un libro
         Spark.delete("/libros/id/:id", (request, response) -> {
-            Long id = Long.parseLong(request.params(":id"));
+            long id = Long.parseLong(request.params(":id"));
             boolean eliminado = dao.deleteById(id);
             if (eliminado) {
                 response.status(200);

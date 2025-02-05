@@ -15,7 +15,7 @@ public class LibroDao implements LibroDAOInterface {
     @Override
     public List<Libro> devolverTodos() {
         try (Session session = sessionFactory.openSession()) {
-            return session.createQuery("FROM Libro", Libro.class).list();
+            return session.createQuery("from Libro", Libro.class).list();
         }
     }
 
